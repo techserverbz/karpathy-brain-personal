@@ -10,34 +10,53 @@ A self-building wiki that auto-captures every Claude Code session. For single-us
 
 ## Where to Clone This Repo
 
-Clone it to a stable local path you can `cd` into for future updates. The clone is the **source** — `install.sh` copies from it into `~/.claude/`.
+Clone it **inside `~/.claude/`** so everything Claude-related lives in one place. The clone is the **source**; `install.sh` runs from there and creates the wiki at `~/.claude/wiki/`.
 
-**Recommended location:**
+### Final layout
+
+```
+~/.claude/
+├── karpathy-brain/          ← git clone (source — run git pull here)
+│   ├── hooks/
+│   ├── install.sh
+│   └── .git/
+├── hooks/                   ← hooks copied here by install.sh
+├── wiki/                    ← wiki data (created by install.sh)
+│   ├── raw/
+│   ├── wiki/
+│   └── _state/
+│       ├── karpathy_sync.json      ← sync log (last commit, date, who)
+│       └── karpathy_sync_history.log
+└── CLAUDE.md
+```
+
+### One-time setup
+
 ```bash
-mkdir -p ~/Code
-cd ~/Code
-git clone https://github.com/techserverbz/karpathy-brain-personal.git
-cd karpathy-brain-personal
+mkdir -p ~/.claude
+cd ~/.claude
+git clone https://github.com/techserverbz/karpathy-brain-personal.git karpathy-brain
+cd karpathy-brain
 bash install.sh
 ```
 
 **Windows (Git Bash):**
 ```bash
-mkdir -p /c/Users/$USERNAME/Code
-cd /c/Users/$USERNAME/Code
-git clone https://github.com/techserverbz/karpathy-brain-personal.git
-cd karpathy-brain-personal
+cd /c/Users/$USERNAME/.claude
+git clone https://github.com/techserverbz/karpathy-brain-personal.git karpathy-brain
+cd karpathy-brain
 bash install.sh
 ```
 
-**To update later:**
+### To update later
+
 ```bash
-cd ~/Code/karpathy-brain-personal
+cd ~/.claude/karpathy-brain
 git pull
 bash install.sh
 ```
 
-The clone itself is local-only (don't put it on Google Drive — Drive syncing a `.git/` folder causes conflicts). Your wiki data stays at `~/.claude/wiki/`.
+The sync log at `~/.claude/wiki/_state/karpathy_sync.json` updates automatically every run — check it anytime to see the current commit/date.
 
 ---
 
