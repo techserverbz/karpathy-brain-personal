@@ -8,6 +8,39 @@ A self-building wiki that auto-captures every Claude Code session. For single-us
 
 ---
 
+## Where to Clone This Repo
+
+Clone it to a stable local path you can `cd` into for future updates. The clone is the **source** — `install.sh` copies from it into `~/.claude/`.
+
+**Recommended location:**
+```bash
+mkdir -p ~/Code
+cd ~/Code
+git clone https://github.com/techserverbz/karpathy-brain-personal.git
+cd karpathy-brain-personal
+bash install.sh
+```
+
+**Windows (Git Bash):**
+```bash
+mkdir -p /c/Users/$USERNAME/Code
+cd /c/Users/$USERNAME/Code
+git clone https://github.com/techserverbz/karpathy-brain-personal.git
+cd karpathy-brain-personal
+bash install.sh
+```
+
+**To update later:**
+```bash
+cd ~/Code/karpathy-brain-personal
+git pull
+bash install.sh
+```
+
+The clone itself is local-only (don't put it on Google Drive — Drive syncing a `.git/` folder causes conflicts). Your wiki data stays at `~/.claude/wiki/`.
+
+---
+
 ## What's in this folder
 
 ```
