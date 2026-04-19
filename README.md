@@ -10,10 +10,15 @@ A self-building wiki that auto-captures every Claude Code session. For single-us
 
 ## 🚀 Just Paste This URL to Claude
 
-Tell Claude:
+**Install or update:**
 > Install this: https://github.com/techserverbz/karpathy-brain-personal
 
-Claude will clone into `~/.claude/wiki/karpathy-brain/`, run `install.sh`, and verify. No other input needed from you.
+Claude will clone into `~/.claude/wiki/karpathy-brain/`, run `install.sh`, and verify.
+
+**Check if outdated:**
+> Is my karpathy-brain-personal up to date? https://github.com/techserverbz/karpathy-brain-personal
+
+Claude reads your sync log (`~/.claude/wiki/_state/karpathy_sync.json`), compares with the latest commit on GitHub, reports the diff, and offers to update if behind.
 
 ---
 
