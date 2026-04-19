@@ -173,3 +173,38 @@ Your raw logs, wiki pages, and hot cache now sync across your machines. User/mac
 **Hot cache empty:** Empty until first compile runs. Say `scsb` in a session to force a compile.
 
 **Claude not capturing:** The CLAUDEMD-SNIPPET must be in your CLAUDE.md. Without it, Claude doesn't know about the raw log.
+
+---
+
+## Sync Log — Check When You Last Updated
+
+Every time you run `bash install.sh`, it writes two files:
+
+- `~/.claude/wiki/_state/karpathy_sync.json` — current state (commit, date, who, from where)
+- `~/.claude/wiki/_state/karpathy_sync_history.log` — append-only history of all installs
+
+**Check current sync state:**
+```bash
+cat ~/.claude/wiki/_state/karpathy_sync.json
+```
+
+Example output:
+```json
+{
+  "flavour": "personal",
+  "installed_at": "2026-04-19T21:55:00Z",
+  "installed_by": "Shubham(Code)@DESKTOP",
+  "git_commit": "7da1c84a...",
+  "git_commit_short": "7da1c84",
+  "git_commit_date": "2026-04-17T14:10:01Z",
+  "git_commit_message": "Karpathy Brain — Personal: ...",
+  "git_remote": "https://github.com/techserverbz/karpathy-brain-personal.git"
+}
+```
+
+**See full history:**
+```bash
+cat ~/.claude/wiki/_state/karpathy_sync_history.log
+```
+
+**Update:** `cd` into your clone, then `git pull && bash install.sh`. The sync log updates automatically.
