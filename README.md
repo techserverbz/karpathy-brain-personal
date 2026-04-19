@@ -8,33 +8,47 @@ A self-building wiki that auto-captures every Claude Code session. For single-us
 
 ---
 
-## Where to Clone This Repo
+## 🚀 Just Paste This URL to Claude
 
-Clone it **inside `~/.claude/`** so everything Claude-related lives in one place. The clone is the **source**; `install.sh` runs from there and creates the wiki at `~/.claude/wiki/`.
+Tell Claude:
+> Install this: https://github.com/techserverbz/karpathy-brain-personal
+
+Claude will clone into `~/.claude/wiki/karpathy-brain/`, run `install.sh`, and verify. No other input needed from you.
+
+---
+
+---
+
+## Where the Clone Lives
+
+The clone sits **inside `~/.claude/wiki/`** so everything Claude-related lives in one place. The clone is the **source**; `install.sh` copies hooks to `~/.claude/hooks/` and creates wiki data folders in `~/.claude/wiki/`.
 
 ### Final layout
 
 ```
 ~/.claude/
-├── karpathy-brain/          ← git clone (source — run git pull here)
-│   ├── hooks/
-│   ├── install.sh
-│   └── .git/
-├── hooks/                   ← hooks copied here by install.sh
-├── wiki/                    ← wiki data (created by install.sh)
-│   ├── raw/
-│   ├── wiki/
-│   └── _state/
-│       ├── karpathy_sync.json      ← sync log (last commit, date, who)
-│       └── karpathy_sync_history.log
+├── hooks/                        ← hooks copied here by install.sh
+├── wiki/
+│   ├── karpathy-brain/           ← git clone (source — run git pull here)
+│   │   ├── hooks/
+│   │   ├── install.sh
+│   │   └── .git/
+│   ├── raw/                      ← session logs (auto)
+│   │   └── processed/
+│   ├── wiki/                     ← compiled pages
+│   ├── _state/
+│   │   ├── karpathy_sync.json    ← sync log (last commit, date, who)
+│   │   └── karpathy_sync_history.log
+│   ├── tasks.md                  ← planner files
+│   ├── reminders.md
+│   └── calendar.md
 └── CLAUDE.md
 ```
 
-### One-time setup
+### Manual setup (if you're not using Claude)
 
 ```bash
-mkdir -p ~/.claude
-cd ~/.claude
+cd ~/.claude/wiki
 git clone https://github.com/techserverbz/karpathy-brain-personal.git karpathy-brain
 cd karpathy-brain
 bash install.sh
@@ -42,21 +56,22 @@ bash install.sh
 
 **Windows (Git Bash):**
 ```bash
-cd /c/Users/$USERNAME/.claude
+cd /c/Users/$USERNAME/.claude/wiki
 git clone https://github.com/techserverbz/karpathy-brain-personal.git karpathy-brain
 cd karpathy-brain
 bash install.sh
 ```
 
-### To update later
+### Update later
 
+Tell Claude: *"update karpathy brain"* — or manually:
 ```bash
-cd ~/.claude/karpathy-brain
+cd ~/.claude/wiki/karpathy-brain
 git pull
 bash install.sh
 ```
 
-The sync log at `~/.claude/wiki/_state/karpathy_sync.json` updates automatically every run — check it anytime to see the current commit/date.
+The sync log at `~/.claude/wiki/_state/karpathy_sync.json` updates automatically every run.
 
 ---
 
